@@ -1,0 +1,14 @@
+#IDEA
+.idea
+*.ipr
+*.iws
+
+#Maven
+target/
+log/
+
+# Mac OSX
+.DS_Store
+HELP.md
+mvnw
+mvnw.cmd

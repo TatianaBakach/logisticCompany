@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="postgresql"/>
+    <changeSet id="301" author="Tatiana Bakach">
+        <createTable tableName="order_employee">
+            <column name="order_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employee_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey
+                columnNames="order_id, employee_id"
+                constraintName="pk_order_employee"
+                tableName="order_employee"/>
+    </changeSet>
+    <changeSet id="302" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="order_employee"
+                                 baseColumnNames="order_id"
+                                 constraintName="fk_order_employee_order"
+                                 referencedTableName="order_object"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="303" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="order_employee"
+                                 baseColumnNames="employee_id"
+                                 constraintName="fk_order_employee_employee"
+                                 referencedTableName="employee"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+</databaseChangeLog>

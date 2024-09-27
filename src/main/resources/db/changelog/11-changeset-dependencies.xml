@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="postgresql"/>
+    <changeSet id="201" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="company"
+                                 baseColumnNames="legal_address_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_company_address_legal"
+                                 referencedTableName="address"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="202" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="company"
+                                 baseColumnNames="post_address_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_company_address_post"
+                                 referencedTableName="address"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="203" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="contract"
+                                 baseColumnNames="company_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_contract_company"
+                                 referencedTableName="company"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="204" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="route_point"
+                                 baseColumnNames="address_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_route_point_address"
+                                 referencedTableName="address"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="205" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="credentials"
+                                 baseColumnNames="role_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_credentials_role"
+                                 referencedTableName="role"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="206" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="employee"
+                                 baseColumnNames="credentials_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_employee_credentials"
+                                 referencedTableName="credentials"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="207" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="order_object"
+                                 baseColumnNames="car_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_order_car"
+                                 referencedTableName="car"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="208" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="order_object"
+                                 baseColumnNames="driver_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_order_driver"
+                                 referencedTableName="driver"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="209" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="order_object"
+                                 baseColumnNames="customer_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_order_company_customer"
+                                 referencedTableName="company"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="210" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="order_object"
+                                 baseColumnNames="carrier_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_order_company_carrier"
+                                 referencedTableName="company"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+    <changeSet id="211" author="Tatiana Bakach">
+        <addForeignKeyConstraint baseTableName="route_point"
+                                 baseColumnNames="order_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 constraintName="fk_route_point_order"
+                                 referencedTableName="order_object"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+</databaseChangeLog>

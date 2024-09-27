@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="postgresql"/>
+    <changeSet id="109" author="Tatiana Bakach">
+        <createTable tableName="order_object">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="number" type="varchar(128)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="integer">
+            </column>
+            <column name="carrier_id" type="integer">
+            </column>
+            <column name="car_id" type="integer">
+            </column>
+            <column name="driver_id" type="integer">
+            </column>
+            <column name="loading_method" type="varchar(128)">
+            </column>
+            <column name="cargo_type" type="varchar(256)">
+            </column>
+            <column name="cargo_weight" type="decimal">
+            </column>
+            <column name="paid_customer" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="paid_carrier" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
